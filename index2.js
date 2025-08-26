@@ -5,7 +5,8 @@ const exIcon = document.querySelector("form .reverse");
 const amount = document.querySelector("form input");
 const exRateTxt = document.querySelector("form .result");
 
-// Dropdowns fill
+// Event listener for currency dropdowns (select)
+
 [fromCur, toCur].forEach((select, i) => {
     for (let curCode in Country_List) {
         const selected = (i === 0 && curCode === "USD") || (i === 1 && curCode === "GBP") ? "selected" : "";
@@ -18,57 +19,24 @@ const exRateTxt = document.querySelector("form .result");
     });
 });
 
-// ✅ Helper function to get rates (with caching)
-async function fetchRates(baseCurrency) {
-    const savedData = JSON.parse(localStorage.getItem("currencyRates"));
-    const now = Date.now();
+// Function to get exchange rate from api
 
-    // Check if cached and not older than 24 hours
-    if (savedData && savedData[baseCurrency] && (now - savedData.timestamp < 24 * 60 * 60 * 1000)) {
-        console.log("✅ Using cached rates");
-        return savedData[baseCurrency];
-    }
-
-    if (navigator.onLine) {
-        try {
-            const response = await fetch(`https://v6.exchangerate-api.com/v6/80b6ae683d0b379916ac57cd/latest/${baseCurrency}`);
-            const data = await response.json();
-
-            let storageData = savedData || {};
-            storageData[baseCurrency] = data.conversion_rates;
-            storageData.timestamp = now;
-
-            localStorage.setItem("currencyRates", JSON.stringify(storageData));
-
-            console.log("🌍 Fetched fresh rates");
-            return data.conversion_rates;
-        } catch (error) {
-            console.log("⚠️ API failed, fallback to cached data");
-            return savedData ? savedData[baseCurrency] : null;
-        }
-    } else {
-        console.log("📴 Offline, using cached rates");
-        return savedData ? savedData[baseCurrency] : null;
-    }
-}
-
-// Main function to get exchange rate
 async function getExchangeRate() {
     const amountVal = amount.value || 1;
     exRateTxt.innerText = "Getting exchange rate...";
-
-    const rates = await fetchRates(fromCur.value);
-
-    if (rates && rates[toCur.value]) {
-        const exchangeRate = rates[toCur.value];
+    try {
+        const response = await fetch(`https://v6.exchangerate-api.com/v6/80b6ae683d0b379916ac57cd/latest/${fromCur.value}`);
+        const result = await response.json();
+        const exchangeRate = result.conversion_rates[toCur.value];
         const totalExRate = (amountVal * exchangeRate).toFixed(2);
         exRateTxt.innerText = `${amountVal} ${fromCur.value} = ${totalExRate} ${toCur.value}`;
-    } else {
-        exRateTxt.innerText = "⚠️ No exchange rate available (offline & no cache)";
+    } catch (error) {
+        exRateTxt.innerText = "Something went wrong...";
     }
 }
 
-// Event listeners
+// Event listeners for button and exchange icon click
+
 window.addEventListener("load", getExchangeRate);
 getBtn.addEventListener("click", (e) => {
     e.preventDefault();
