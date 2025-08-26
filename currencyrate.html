@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Currency Rates</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Currency Rates</h2>
+
+    <div class="rate-toolbar">
+      <div class="select-input" id="baseSelectWrap">
+        <img id="base-flag" src="https://flagcdn.com/48x36/us.png" alt="flag" />
+        <select id="base-currency"></select>
+      </div>
+      <div class="last-updated" id="last-updated">Updated --:--:--</div>
+    </div>
+
+    <div class="rates-table-wrap">
+      <table class="rates-table" id="rates-table">
+        <thead>
+          <tr>
+            <th>Currency</th>
+            <th>Code</th>
+            <th class="right">Rate</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <a class="link-btn" href="index.html"><i class="fa fa-arrow-left"></i> Back to Converter</a>
+  </div>
+
+  <script src="countries.js"></script>
+  <script src="currencyrate.js"></script>
+</body>
+</html>
