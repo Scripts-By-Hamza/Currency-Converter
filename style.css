@@ -19,6 +19,12 @@ body{
     overflow: hidden;
 }
 
+/* Allow scrolling on the rates page */
+body.rates-page{
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 /* Clean gradient background, no extra bloom blobs needed */
 body::before,
 body::after{ content: none; }
