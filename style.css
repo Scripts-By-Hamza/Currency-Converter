@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     border: none;
@@ -9,25 +9,28 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body{
+body {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     padding: 16px;
-    background: #6c3ef5; /* purple canvas to match theme */
+    background: #6c3ef5;
+    /* purple canvas to match theme */
     overflow: hidden;
 }
 
 /* Allow scrolling on the rates page */
-body.rates-page{
+body.rates-page {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 }
 
 /* Clean gradient background, no extra bloom blobs needed */
 body::before,
-body::after{ content: none; }
+body::after {
+    content: none;
+}
 
 .container {
     width: 360px;
@@ -39,7 +42,7 @@ body::after{ content: none; }
     border: 1px solid rgba(34, 52, 120, 0.06);
 }
 
-.container h2{
+.container h2 {
     font-size: 1.25rem;
     font-weight: 600;
     text-align: center;
@@ -47,20 +50,20 @@ body::after{ content: none; }
     background: #f6f2ff;
     padding: 14px 18px;
     border-radius: 16px;
-    box-shadow: inset 0 -6px 12px rgba(0,0,0,0.04);
+    box-shadow: inset 0 -6px 12px rgba(0, 0, 0, 0.04);
 }
 
-.container form{
+.container form {
     margin: 30px 0 10px 0;
 }
 
-.container form p{
+.container form p {
     font-size: 0.9rem;
     margin-bottom: 8px;
     color: #7265a6;
 }
 
-.container form input{
+.container form input {
     height: 45px;
     width: 100%;
     border-radius: 12px;
@@ -72,18 +75,18 @@ body::after{ content: none; }
     transition: all 0.2s ease;
 }
 
-.container form input:hover{
+.container form input:hover {
     border-color: #d4c9ff;
 }
 
-.container form input:focus{
+.container form input:focus {
     padding: 0 15px;
     border-color: #a489ff;
     background: #f2eeff;
     box-shadow: 0 0 0 4px rgba(108, 62, 245, 0.14);
 }
 
-.container form .convert-box{
+.container form .convert-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,11 +94,12 @@ body::after{ content: none; }
     margin-top: 20px;
 }
 
-.container form .from, .container form .to{
+.container form .from,
+.container form .to {
     width: 100%;
 }
 
-.container .convert-box .select-input{
+.container .convert-box .select-input {
     display: flex;
     width: 100%;
     border: 1px solid #6c3ef5;
@@ -108,16 +112,16 @@ body::after{ content: none; }
     transition: all 0.2s ease;
 }
 
-.container .convert-box .select-input:hover{
+.container .convert-box .select-input:hover {
     filter: brightness(1.03);
 }
 
-.container .convert-box .select-input img{
+.container .convert-box .select-input img {
     max-width: 22px;
     border-radius: 3px;
 }
 
-.container .convert-box .select-input select{
+.container .convert-box .select-input select {
     width: 100%;
     cursor: pointer;
     font-size: 1rem;
@@ -126,11 +130,11 @@ body::after{ content: none; }
     color: #ffffff;
 }
 
-.container .convert-box .select-input select option{
+.container .convert-box .select-input select option {
     color: #0a0a0a;
 }
 
-.container .convert-box .reverse{
+.container .convert-box .reverse {
     cursor: pointer;
     margin-top: 16px;
     font-size: 20px;
@@ -144,15 +148,15 @@ body::after{ content: none; }
     display: grid;
     place-items: center;
     border-radius: 50%;
-    box-shadow: 0 6px 14px rgba(108,62,245,0.35);
+    box-shadow: 0 6px 14px rgba(108, 62, 245, 0.35);
 }
 
-.container .convert-box .reverse:hover{
+.container .convert-box .reverse:hover {
     transform: rotate(90deg) scale(1.06);
     background: #7a50ff;
 }
 
-.container form .result{
+.container form .result {
     font-size: 1rem;
     margin: 15px 0 15px;
     color: #3b2b7a;
@@ -162,9 +166,9 @@ body::after{ content: none; }
     border-radius: 12px;
 }
 
-.container form button{
+.container form button {
     width: 100%;
-    height: 45px;
+    height: 40px;
     color: #ffffff;
     background: linear-gradient(135deg, #6c3ef5 0%, #845fff 100%);
     font-size: 1.05rem;
@@ -173,20 +177,20 @@ body::after{ content: none; }
     cursor: pointer;
     border-radius: 12px;
     transition: transform 0.1s ease, box-shadow 0.2s ease;
-    box-shadow: 0 12px 24px rgba(108,62,245,0.35);
+    box-shadow: 0 12px 24px rgba(108, 62, 245, 0.35);
 }
 
-.container form button:hover{
+.container form button:hover {
     transform: translateY(-1px);
-    box-shadow: 0 14px 28px rgba(108,62,245,0.45);
+    box-shadow: 0 14px 28px rgba(108, 62, 245, 0.45);
 }
 
 /* ---- Shared link-style buttons ---- */
-.link-btn{
+.link-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-top: 12px;
+    margin-top: 10px;
     width: 100%;
     justify-content: center;
     text-decoration: none;
@@ -194,33 +198,54 @@ body::after{ content: none; }
     color: #6c3ef5;
     border: 1px solid #e9e3ff;
     border-radius: 12px;
-    padding: 12px 14px;
+    padding: 10px 10px;
     font-weight: 600;
     transition: background 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 6px 14px rgba(108,62,245,0.12);
+    box-shadow: 0 6px 14px rgba(108, 62, 245, 0.12);
 }
-.link-btn:hover{ background:#f7f3ff; }
-.link-btn.secondary{ background:#f6f2ff; }
+
+.link-btn:hover {
+    background: #f7f3ff;
+}
+
+.link-btn.secondary {
+    background: #f6f2ff;
+}
 
 /* ---- Rates page toolbar ---- */
-.rate-toolbar{
+.rate-toolbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
     margin: 18px 0 10px;
 }
-.rate-toolbar .select-input{ flex: 1; }
-.rate-toolbar .last-updated{
+
+.rate-toolbar .select-input {
+    flex: 1;
+}
+
+.rate-toolbar .last-updated {
     color: #7b6fb3;
     font-size: 0.85rem;
     white-space: nowrap;
 }
 
 /* ---- Rates table ---- */
-.rates-table-wrap{ width: 100%; overflow: auto; background:#ffffff; border-radius: 14px; border:1px solid #efeaff; }
-table.rates-table{ width: 100%; border-collapse: collapse; }
-.rates-table thead th{
+.rates-table-wrap {
+    width: 100%;
+    overflow: auto;
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #efeaff;
+}
+
+table.rates-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rates-table thead th {
     text-align: left;
     font-weight: 600;
     color: #5e4fb6;
@@ -228,8 +253,30 @@ table.rates-table{ width: 100%; border-collapse: collapse; }
     border-bottom: 1px solid #efeaff;
     background: #fbf9ff;
 }
-.rates-table th.right, .rates-table td.right{ text-align: right; }
-.rates-table tbody td{ padding: 12px 14px; color:#1c2140; border-bottom:1px solid #f2eeff; }
-.rates-table tbody tr:hover{ background:#fbf9ff; }
-.rates-table td.ccell{ display:flex; align-items:center; gap:10px; }
-.rates-table td.ccell img{ width:22px; height:auto; border-radius:3px; }
+
+.rates-table th.right,
+.rates-table td.right {
+    text-align: right;
+}
+
+.rates-table tbody td {
+    padding: 12px 14px;
+    color: #1c2140;
+    border-bottom: 1px solid #f2eeff;
+}
+
+.rates-table tbody tr:hover {
+    background: #fbf9ff;
+}
+
+.rates-table td.ccell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rates-table td.ccell img {
+    width: 22px;
+    height: auto;
+    border-radius: 3px;
+}
